@@ -14,9 +14,9 @@ function adicionar(){
    var taskCounter = document.querySelector('.counter1');
    taskCounter.textContent = taskCount;
 
-   var circleCheck = document.createElement('button');
-   circleCheck.classList = 'check'
-   circleCheck.innerHTML = '<img src="round.svg">'
+   var circleCheck = document.createElement('label');
+   circleCheck.classList = 'container'
+   circleCheck.innerHTML = '<input type="checkbox">' + '<span class="checkmark"></span>'
 
    var newText = document.createElement('p')
    newText.textContent = texto
@@ -31,26 +31,21 @@ function adicionar(){
    deleteBtn.innerHTML = '<img src="Layer 2.svg" alt="trash">'
    deleteBtn.onclick = function(){
     deleteTask(newTask);
-   }
-
-   
+   }   
 
    newTask.appendChild(deleteBtn);
 
    var taskList = document.querySelector('.task');
    taskList.appendChild(newTask);
 
-   var não = document.querySelector('.não');
-   não.style.display = 'none';
-
-   var crie = document.querySelector('.crie');
-   crie.style.display = 'none';
-
-   var icone = document.querySelector('.icone');
-   icone.style.display = 'none';
-
    var info = document.querySelector('.info');
    info.style.borderBottom = 'none';
+
+   var groupBox = document.querySelectorAll('.icone, .não, .crie');
+
+groupBox.forEach(function(element) {
+   element.style.display = 'none';
+});
    
    inputElement.value = '';
 }
@@ -64,7 +59,7 @@ function adicionar(){
 
     var noMessageBox = document.querySelectorAll('.não', '.crie', '.icone')
     while(taskList.childNodes === 0){
-        noMessageBox.style.display = 'flex'
+        noMessageBox.style.display = 'flex';
     }
 
-   }
+}

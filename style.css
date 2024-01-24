@@ -114,6 +114,7 @@ section{
 
 li{
     display: flex;
+    padding: 12px;
     align-items: center;
     flex-direction: row;
     justify-content: flex-start;
@@ -135,25 +136,64 @@ li{
 }
 
 .deletar{
-    padding: 9px 10px;
+    padding: 10px;
     cursor: pointer;
 }
 
-.check{
-   border-radius: 50%;
-   width: 24px;
-   height: 24px;
-   background-color: transparent;
-   border: solid 2px #4EA8DE;
-   cursor: pointer;
-   margin: 16px 8px 16px 12px;
-   outline: none;
-}
+.container {
+    display: flex;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 
-.check:checked{
-    accent-color: #5E60CE;
-    border: solid #5E60CE 2px;
-}
+  .container input {
+    
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    position: relative;
+    height: 24px;
+    width: 24px;
+    background-color: transparent;
+    border: solid 2px #4EA8DE;
+    border-radius: 50px;
+  }
+
+.container input:checked ~ .checkmark {
+    background-color: #5E60CE;
+    border: solid 2px #5E60CE;
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
 
 .task{
     display: flex;
