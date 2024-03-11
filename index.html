@@ -14,20 +14,23 @@
     </header>
  
     <main class="input">
-        <input type="text" required placeholder="Adicione uma nova tarefa" class="label">
-        <button class="btn" onclick="adicionar();"><img src="plus.svg" alt="plus"></button>
+        <input type="text" required placeholder="Adicione uma nova tarefa" class="label" id="label" name="label">
+        <button class="btn" id="btnAdd"> 
+            <img src="plus.svg" alt="plus">
+        </button>
     </main>
 
 <section class="tasks">
         <div class="info">
             <div class="created">Criadas 
-                <div class="counter1">0</div></div>
+                <div class="counter1">0</div>
+            </div>
             <div class="done">Concluídas 
-                <div class="counter2">0</div></div>
-                
+                <div class="counter2">0</div>
+            </div> 
         </div>
-        <div class="task">
-            <div class="vazio">
+        <div class="task" id="tarefas">
+            <div class="vazio" id="vazio">
                 <div class="icone"><img src="Clipboard.svg" alt="Clipboard" class="Clipboard"></div>
                 <span class="não">Você ainda não tem tarefas cadastradas</span>
                 <span class="crie">Crie tarefas e organize seus itens a fazer</span>

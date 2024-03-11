@@ -114,7 +114,8 @@ section{
 
 li{
     display: flex;
-    padding: 12px;
+    position: relative;
+    padding: 20px;
     align-items: center;
     flex-direction: row;
     justify-content: flex-start;
@@ -138,13 +139,20 @@ li{
 .deleteBtn{
     padding: 16px;
     cursor: pointer;
-    left: 90%;
-    position: fixed;
+    left: 92%;
+    position: absolute;
 }
 
 p{
     word-break: break-all;
     width: 600px;
+    text-decoration: none;
+}
+
+.lineThrough{
+    word-break: break-all;
+    width: 680px;
+    text-decoration: line-through;
 }
 
 .container {
@@ -171,7 +179,7 @@ p{
     justify-content: center;
   }
 
-  .container input[type="checkbox"]:after{
+  .container input[type="checkbox"]:after {
     font-family: "Font Awesome 6 Free";
     content: "\f00c";
     font-weight: 900;
@@ -179,7 +187,7 @@ p{
     color: white;
     flex-shrink: 0;
     display: none;
-  }  
+}
 
   .container input[type="checkbox"]:checked{
     background-color: #5E60CE;

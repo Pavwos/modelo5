@@ -1,117 +1,75 @@
-var taskCount = 0;
-var taskMark = 0;
+let taskCount = 0;
+let taskComplete = 0;
+const botaoCriar = document.getElementById('btnAdd');
+const taskList = document.getElementById('tarefas');
+const taskCounter = document.querySelector('.counter1');
+const taskCounterElement = document.querySelector('.counter2');
+const mensagemVazio = document.getElementById('vazio');
 
-// chamar função
-function adicionar() {
-    var input = document.querySelector('.label');
-    var texto = input.value;
+botaoCriar.addEventListener('click', () => {
+    const newTask = document.getElementById('label').value;
 
-    // verificar se tem texto e tirar espaços de antes e depois dele
-    if (texto.trim() === '') {
-        alert('Coloque um texto 👍');
+    if (newTask.trim() === '') {
+        // Não adiciona tarefa vazia
         return;
     }
 
-    var checkBtn = document.createElement('label');
-    checkBtn.className = 'container';
-    checkBtn.innerHTML = '<input type="checkbox">';
-    checkBtn.onclick = function () {
-        lineThrough(newTask);
-    };
+    const taskId = 'task_' + taskCount; // Identificador único para cada tarefa
 
-    // criar item
-    var newTask = document.createElement('li');
-    newTask.className = 'frase';
-    newTask.appendChild(checkBtn); // adicionar botão de concluído
-    newTask.innerHTML += `<p>${texto}</p>`;
+    const texto = document.createElement("li");
+    texto.id = taskId;
+    texto.textContent = newTask;
+    taskCount++;
+    
+    const checkBtn = document.createElement('input');
+    checkBtn.type = 'checkbox';
+    checkBtn.addEventListener("change", () => {
+        texto.classList.toggle("lineThrough", checkBtn.checked);
 
-    // criar botão de delete
-    var deleteBtn = document.createElement('span');
+        if (checkBtn.checked) {
+            taskComplete++;
+        } else {
+            taskComplete--;
+        }
+
+        taskCounterElement.textContent = taskComplete;
+    });
+
+    const checkLabel = document.createElement('label');
+    checkLabel.className = 'container';
+    checkLabel.appendChild(checkBtn);
+
+    const deleteBtn = document.createElement('span');
     deleteBtn.className = 'deleteBtn';
     deleteBtn.innerHTML = '<img src="Layer 2.svg" alt="trash">';
-    deleteBtn.onclick = function () {
-        deleteTask(newTask);
-        checkTaskList();
-    };
+    deleteBtn.addEventListener('click', () => {
+        const taskElement = document.getElementById(taskId);
+        taskElement.remove();
+        taskCount--;
 
-    // adicionar botão de deletar
-    newTask.appendChild(deleteBtn);
+        if (checkBtn.checked) {
+            taskComplete--;
+        }
 
-    // adicionar tarefa a lista
-    var taskList = document.querySelector('.tarefas');
-    taskList.appendChild(newTask);
+        taskCounter.textContent = taskCount;
+        taskCounterElement.textContent = taskComplete;
 
-    // adicionar no counter1
-    taskCount++;
+        // Verifica se não há mais tarefas e mostra a mensagem padrão se necessário
+        atualizarVisibilidadeMensagem();
+    });
 
-    var taskCounter = document.querySelector('.counter1');
+    texto.appendChild(deleteBtn);
+    texto.appendChild(checkLabel);
+
+    document.getElementById('label').value = '';
+    taskList.appendChild(texto);
     taskCounter.textContent = taskCount;
 
-    // ocultar mensagens
-    var vazio = document.querySelectorAll('.icone, .não, .crie');
-    vazio.forEach(function (vazio) {
-        vazio.style.display = 'none';
-    });
-    document.querySelector('.info').style.borderBottom = 'none';
+    // Oculta a mensagem padrão se houver tarefas
+    atualizarVisibilidadeMensagem();
+});
 
-    // limpar label
-    input.value = '';
-
-    // apagar a task
-    function deleteTask(task) {
-        var taskList = document.querySelector('.tarefas');
-        taskList.removeChild(task);
-
-        taskCount--;
-        var taskCounter = document.querySelector('.counter1');
-        taskCounter.textContent = taskCount;
-    }
-
-    // verificar se há tarefas na lista
-    function checkTaskList() {
-        var taskList = document.querySelector('.tarefas');
-        var vazio = document.querySelectorAll('.icone, .não, .crie');
-        var info = document.querySelectorAll('.info');
-
-        if (taskList.children.length === 0) {
-            info.forEach(function (info) {
-                info.style.borderBottom = 'solid 1px #333';
-            });
-            vazio.forEach(function (vazio) {
-                vazio.style.display = 'flex';
-            });
-        } else {
-            info.forEach(function (info) {
-                info.style.borderBottom = 'none';
-            });
-            vazio.forEach(function (vazio) {
-                vazio.style.display = 'none';
-            });
-        }
-    }
-
-    // fazer o traçado quando clicar nele
-    function lineThrough(task) {
-        taskMark++;
-    
-        var taskComplete = document.querySelector('.counter2');
-        taskComplete.textContent = taskMark;
-    
-        var texto = task.querySelector('p');
-    
-        if (texto.style.textDecoration === 'line-through') {
-            texto.style.textDecoration = 'none';
-            texto.style.color = '#EDWQ';
-        } else {
-            texto.style.textDecoration = 'line-through';
-            texto.style.color = '#808080';
-        }
-    }
-    
-    var circleCheck = document.querySelector('.checkmark');
-    if (circleCheck) {
-        circleCheck.addEventListener('click', function () {
-            lineThrough(newTask);
-        });
-    }
+// Função para atualizar a visibilidade da mensagem padrão
+function atualizarVisibilidadeMensagem() {
+    mensagemVazio.style.display = taskList.children.length === 0 ? 'block' : 'none';
 }
