@@ -33,6 +33,7 @@ botaoCriar.addEventListener('click', () => {
         }
 
         taskCounterElement.textContent = taskComplete;
+        atualizarVisibilidadeMensagem();
     });
 
     const checkLabel = document.createElement('label');
@@ -67,6 +68,13 @@ botaoCriar.addEventListener('click', () => {
 
     // Oculta a mensagem padrão se houver tarefas
     atualizarVisibilidadeMensagem();
+});
+
+// Evento de "Enter" para adicionar uma tarefa
+document.getElementById('label').addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+        botaoCriar.click(); // Dispara o evento de clique do botão
+    }
 });
 
 // Função para atualizar a visibilidade da mensagem padrão

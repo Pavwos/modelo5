@@ -150,6 +150,7 @@ p{
 }
 
 .lineThrough{
+    color: #808080;
     word-break: break-all;
     width: 680px;
     text-decoration: line-through;
