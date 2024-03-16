@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
-body {
+html, body {
     background-color: #1A1A1A;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: auto;
+    margin: 0;
+    width: 100%;
+    height: auto;
 }
 
 header{
@@ -15,8 +17,7 @@ header{
     align-items: center;
     justify-content: center;
     margin-top: 80px;
-    margin-bottom: 62px;
-    width: 100%;
+    margin-bottom: 60px;
 }
 
 main{
@@ -24,8 +25,10 @@ main{
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-bottom: 54px;
-    width: 100%;
+    margin-bottom: 50px;
+    width: 50%;
+    max-width: 700px;
+    min-width: 300px
 }
 
 .label{
@@ -38,8 +41,7 @@ main{
     font-size: 16px;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    width: 600px;
-    height: 22px;
+    width: 100%;
 }
 
 .label:valid{
@@ -68,13 +70,15 @@ section{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 700px;
+    width: 50%;
+    max-width: 700px;
+    min-width: 300px
 }
 
 .info{
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 97%;
     font-family: 'inter', sans-serif;
     font-weight: 700;
     font-size: 14px;
@@ -112,14 +116,13 @@ section{
     border-radius: 100px;
 }
 
-li{
+li {
     display: flex;
     position: relative;
     padding: 20px;
     align-items: center;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 680px;
+    width: 92%;
+    max-width: 700px;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     color: #F2F2F2;
@@ -127,6 +130,8 @@ li{
     border-radius: 8px;
     border: solid #333333 1px;
     margin-bottom: 8px;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
 }
 
 .msg{
@@ -137,9 +142,8 @@ li{
 }
 
 .deleteBtn{
-    padding: 16px;
     cursor: pointer;
-    left: 92%;
+    left: 90%;
     position: absolute;
 }
 
@@ -152,7 +156,7 @@ p{
 .lineThrough{
     color: #808080;
     word-break: break-all;
-    width: 680px;
+    width: 92%;
     text-decoration: line-through;
 }
 
@@ -222,6 +226,7 @@ p{
     font-size: 14px;
     color: #808080;
     width: 100%;
+    text-align: center;
 }
 
 
