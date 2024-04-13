@@ -42,7 +42,7 @@ botaoCriar.addEventListener('click', () => {
 
     const deleteBtn = document.createElement('span');
     deleteBtn.className = 'deleteBtn';
-    deleteBtn.innerHTML = '<img src="Layer 2.svg" alt="trash">';
+    deleteBtn.innerHTML = '<img src="./img/Layer 2.svg" alt="trash">';
     deleteBtn.addEventListener('click', () => {
         const taskElement = document.getElementById(taskId);
         taskElement.remove();
@@ -79,5 +79,5 @@ document.getElementById('label').addEventListener('keyup', (event) => {
 
 // Função para atualizar a visibilidade da mensagem padrão
 function atualizarVisibilidadeMensagem() {
-    mensagemVazio.style.display = taskList.children.length === 0 ? 'block' : 'none';
+    mensagemVazio.style.display = taskList.children.length === 0 ? 'flex' : 'none';
 }
